@@ -15,7 +15,7 @@ export default defineConfig({
           filename.split(/[/\\]/).includes("node_modules") ? undefined : true,
       },
       adapter: adapter({ fallback: "404.html" }),
-      paths: { base, relative: false },
+      paths: { base },
     }),
   ],
   test: {

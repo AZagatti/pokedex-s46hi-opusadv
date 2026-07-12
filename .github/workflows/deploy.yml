@@ -43,16 +43,17 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium
 
-      - name: Build
+      - name: Build (for E2E — no base path so test URLs are simple)
         run: npm run build
-        env:
-          BASE_PATH: /pokedex-s46hi-opusadv
 
       - name: E2E tests (against built output)
         run: npx playwright test
+
+      - name: Build for deployment (with GitHub Pages base path)
+        if: github.ref == 'refs/heads/main'
+        run: npm run build
         env:
-          # Use the built output served by preview
-          BASE_URL: http://localhost:4173
+          BASE_PATH: /pokedex-s46hi-opusadv
 
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/main'

@@ -33,3 +33,7 @@ Surprises, rework, and confusion encountered during development.
 - **2026-07-12** Lighthouse flagged `aria-label="View {name} details"` on PokemonCard `<a>` as a label-content-name-mismatch (visible text "Bulbasaur" didn't match accessible name "View Bulbasaur details"). Removed the aria-label; card content already provides sufficient label.
 
 - **2026-07-12** The remote had an older implementation from a prior session. Had to force-push our complete build to replace it.
+
+- **2026-07-12** Deep links (hard-loading `/pokemon/pikachu`) were blank. Root cause: `adapter-static`'s `404.html` SPA fallback uses absolute `/_app/...` paths when `paths.relative` is `true` (the default). With a project site at `/pokedex-s46hi-opusadv/`, those resolve to the repo root instead of the project subdirectory. Fixed by setting `paths.relative = false` in vite.config.ts, which makes all HTML files (including `404.html`) use absolute paths with the base prefix (`/pokedex-s46hi-opusadv/_app/...`).
+
+- **2026-07-12** `filterLoading` state was reused for both generation and type filter loading, but the UI label hardcoded "Loading generation filter..." — showed wrong copy when a type was selected. Fixed to generic "Loading...".
