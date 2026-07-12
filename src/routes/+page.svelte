@@ -298,7 +298,7 @@
 	</div>
 
 	{#if filterLoading}
-		<p class="text-center text-gray-500 py-4" aria-live="polite">Loading generation filter...</p>
+		<p class="text-center text-gray-500 py-4" aria-live="polite">Loading...</p>
 	{/if}
 
 	{#if loading}
