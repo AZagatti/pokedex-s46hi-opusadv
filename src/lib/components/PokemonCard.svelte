@@ -28,9 +28,8 @@
 	<a
 		{href}
 		class="flex flex-col items-center p-4 gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 rounded-2xl"
-		aria-label="View {formatName(name)} details"
 	>
-		<span class="text-xs text-gray-400 dark:text-gray-500 font-mono">#{id.toString().padStart(4, '0')}</span>
+		<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">#{id.toString().padStart(4, '0')}</span>
 
 		<img
 			src={imgSrc}

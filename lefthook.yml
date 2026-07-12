@@ -6,8 +6,7 @@ pre-commit:
       glob: "*.{js,ts,svelte}"
 
     - name: format-check
-      run: npx oxfmt --check {staged_files}
-      glob: "*.{js,ts,svelte}"
+      run: npx oxfmt --check src/
 
     - name: typecheck
       run: npm run check
