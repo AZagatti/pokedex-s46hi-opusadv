@@ -27,3 +27,9 @@ Surprises, rework, and confusion encountered during development.
 - **2026-07-12** `playwright install --with-deps chromium` requires sudo for system packages in WSL2. Removed `--with-deps` since Chromium binaries alone are sufficient in this environment.
 
 - **2026-07-12** Favorites page stored IDs in a `Set<number>` which caused Svelte's `each_key_duplicate` runtime error. Fixed by switching to `number[]` and deduplicating in the derived view with `[...new Set(ids)].sort()`.
+
+- **2026-07-12** lefthook's `{staged_files}` format-check with `oxfmt --check` failed with "Expected at least one target file" when only `.svelte` files were staged. oxfmt silently ignores individual `.svelte` file arguments. Fixed by running `oxfmt --check src/` (directory) instead.
+
+- **2026-07-12** Lighthouse flagged `aria-label="View {name} details"` on PokemonCard `<a>` as a label-content-name-mismatch (visible text "Bulbasaur" didn't match accessible name "View Bulbasaur details"). Removed the aria-label; card content already provides sufficient label.
+
+- **2026-07-12** The remote had an older implementation from a prior session. Had to force-push our complete build to replace it.
